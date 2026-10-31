@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: revenant
+    runtime: docker
+    plan: free
+    healthCheckPath: /api/health
+    envVars:
+      - key: LLM_BASE_URL     # e.g. http://your-ollama-host:11434/v1
+        sync: false
+      - key: LLM_MODEL
+        value: gemma3:4b
+      - key: LLM_API_KEY
+        sync: false

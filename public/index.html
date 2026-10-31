@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Revenant · a séance for dead repositories</title>
+<meta name="description" content="Paste a git repository. Its ghost answers, but only with what its commits say.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🕯️</text></svg>">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class="flags" aria-hidden="true"></div>
+<header class="hero">
+  <h1>Revenant</h1>
+  <p class="lede">Hold a séance with a dead git repository. Its ghost answers, but only with what its commits say.</p>
+  <form id="dig" autocomplete="off">
+    <label for="src">Repository address</label>
+    <div class="row">
+      <input id="src" type="url" required placeholder="https://github.com/owner/repo" inputmode="url">
+      <button type="submit" id="digBtn">Dig it up</button>
+    </div>
+    <p class="hint">Works with public repositories on GitHub, GitLab and Codeberg.</p>
+  </form>
+  <p id="status" role="status" aria-live="polite"></p>
+  <p id="medium" class="medium"></p>
+</header>
+
+<main id="grave" hidden>
+  <article id="ofrenda">
+    <h2 id="name"></h2>
+    <p class="dates" id="dates"></p>
+    <p class="epitaph" id="epitaph" aria-live="polite"></p>
+    <dl class="stats" id="stats"></dl>
+    <h3>One candle for each keeper</h3>
+    <ul class="candles" id="candles"></ul>
+    <h3>Last words</h3>
+    <ul class="words" id="words"></ul>
+  </article>
+
+  <section id="seance" aria-labelledby="sh">
+    <h3 id="sh">Ask the dead</h3>
+    <div class="chips" id="suggest"></div>
+    <form id="askForm" autocomplete="off">
+      <label for="q" class="sr">Your question</label>
+      <div class="row">
+        <input id="q" maxlength="300" required placeholder="Why did you go quiet?">
+        <button type="submit" id="askBtn">Ask</button>
+      </div>
+    </form>
+    <div id="answer" class="answer" aria-live="polite"></div>
+    <p id="trust" class="trust"></p>
+  </section>
+
+  <button id="save" class="ghost">Save the ofrenda as a page</button>
+</main>
+
+<footer class="site">Spoken only from the commit record by an open-weight model. Nothing is stored beyond a few minutes of memory.</footer>
+<script src="/app.js"></script>
+</body>
+</html>
